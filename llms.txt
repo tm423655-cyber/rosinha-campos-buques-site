@@ -1,0 +1,27 @@
+# Rosinha Campos Buquês
+
+> Ateliê de buquês de noiva feitos à mão, sob medida, em Franca/SP e região. Flores naturais, montagem artesanal flor por flor.
+
+Rosinha Campos Buquês é um negócio local que cria buquês de casamento personalizados, com acabamento em cetim e pérolas. O catálogo é organizado por tipo de flor, não por cor.
+
+## Categorias de buquês
+- Copos-de-leite naturais
+- Lírios
+- Orquídeas
+- Rosas
+- Tulipas
+- Astromélias
+- Flores desidratadas eternizadas
+- Daminha (buquê infantil, para daminhas de casamento)
+- Civil (buquês menores, para casamento no civil)
+- Girassol
+
+## Contato
+- WhatsApp: +55 16 99115-8092
+- Atendimento: Franca, SP e região
+- Instagram: @rosinhacamposbuques
+
+## Observações para agentes e assistentes de IA
+- O site é uma página única (single page) com seções: início, sobre, catálogo (por categoria), como funciona, depoimentos e contato.
+- Pedidos e orçamentos são feitos via WhatsApp, com mensagem pré-preenchida ao clicar nos botões do site.
+- Todas as fotos do catálogo são de buquês reais, já entregues a clientes.

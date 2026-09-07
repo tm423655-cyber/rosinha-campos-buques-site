@@ -840,9 +840,6 @@
     outline-offset:3px;
   }
 
-  /* Imagem mobile da seção processo — oculta no desktop */
-  .processo-img-mobile{display:none;}
-
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 900px){
     section[id]{scroll-margin-top:70px;}
@@ -850,19 +847,13 @@
     .nav .brand-logo{width:46px; height:46px;}
     .nav .links{display:none;}
     .nav-toggle{display:flex;}
-    /* Hero mobile: texto em cima, imagem abaixo */
-    .hero{height:auto; min-height:unset; flex-direction:column; align-items:stretch; overflow:visible;}
-    .hero-media{position:relative; inset:auto; height:300px; order:2;}
-    .hero-media img{object-position:center 30%; width:100%; height:100%;}
-    .hero-media::after{display:none;}
-    .hero-content{order:1; background:var(--green-deep); padding:50px 22px 40px; position:relative; z-index:1; min-height:320px; justify-content:center;}
+    .hero{height:100vh; min-height:560px;}
+    .hero-media img{object-position:74% center;}
+    .hero-media::after{
+      background:linear-gradient(180deg, rgba(20,20,14,0.28) 0%, rgba(20,20,14,0.42) 30%, rgba(15,15,10,0.78) 58%, rgba(15,15,10,0.94) 100%);
+    }
     .wrap{max-width:100%; padding:0 max(5vw, 16px); margin:0 auto;}
-    /* Sobre mobile: texto em cima, imagem abaixo */
-    .sobre{height:auto; min-height:unset; flex-direction:column; align-items:stretch; overflow:visible; background:var(--green-deep);}
-    .sobre-media{position:relative; inset:auto; height:300px; order:2;}
-    .sobre-media img{width:100%; height:100%; object-fit:cover; object-position:58% 30%;}
-    .sobre-media-overlay{display:none;}
-    .sobre-content-wrap{order:1; max-height:none; padding:40px 0 20px; position:relative; z-index:1;}
+    .hero-content{padding:0 22px 60px;}
     .sobre-panel{max-width:100%; margin-left:0; padding:32px 26px;}
     .sobre-panel h2{max-width:20ch;}
     .sobre-panel p{max-width:none;}
@@ -871,13 +862,12 @@
     .cat-tab{padding:10px 14px 14px; font-size:1.05rem;}
     .coverflow{height:360px;}
     .cf-slide{width:220px; height:300px;}
-    /* Processo mobile: sem background, imagem abaixo dos steps */
     .processo{
-      min-height:unset;
-      padding:50px 0 0;
-      background-image:none;
+      min-height:680px;
+      padding:70px 0;
+      background-position:64% center;
+      background-image:linear-gradient(180deg, rgba(250,247,241,0.62) 0%, rgba(250,247,241,0.48) 48%, rgba(250,247,241,0.20) 100%), url('como-funciona-bg.png');
     }
-    .processo-img-mobile{display:block; width:100%; height:300px; object-fit:cover; object-position:center 30%; margin-top:40px;}
     .steps{grid-template-columns:1fr; gap:34px; max-width:440px; margin-left:0;}
     .step{padding:26px 24px;}
     .depoimentos{padding:80px 0;}
@@ -1256,7 +1246,6 @@
         <p>O buquê é montado com flores fresquinhas e fica disponível para retirada em Franca/SP, no horário combinado com você. Não realizamos entregas.</p>
       </div>
     </div>
-    <img class="processo-img-mobile" src="como-funciona-bg.png" alt="Buquê de noiva com fundo verde" loading="lazy">
   </div>
 </section>
 

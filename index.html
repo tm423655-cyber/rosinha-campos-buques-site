@@ -25,6 +25,7 @@
 <meta property="og:image" content="https://rosinhacamposbuques.com.br/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Buquê de noiva criado pela Rosinha Campos Buquês">
 <meta property="og:url" content="https://rosinhacamposbuques.com.br/">
 
 <!-- Twitter Card -->
@@ -32,6 +33,7 @@
 <meta name="twitter:title" content="Rosinha Campos Buquês — Buquês para casamento em Franca/SP">
 <meta name="twitter:description" content="Buquês de noiva feitos à mão, sob medida para o seu casamento. Copos-de-leite, lírios, orquídeas, rosas, tulipas e mais.">
 <meta name="twitter:image" content="https://rosinhacamposbuques.com.br/og-image.jpg">
+<meta name="twitter:image:alt" content="Buquê de noiva criado pela Rosinha Campos Buquês">
 
 <!-- JSON-LD -->
 <script type="application/ld+json">
@@ -42,8 +44,7 @@
   "image": "https://rosinhacamposbuques.com.br/og-image.jpg",
   "url": "https://rosinhacamposbuques.com.br/",
   "telephone": "+5516991158092",
-  "priceRange": "$$",
-  "description": "Buquês de noiva feitos à mão e sob medida, com flores naturais como copos-de-leite, lírios, orquídeas, rosas, tulipas, astromélias, girassóis e arranjos com flores desidratadas eternizadas.",
+  "description": "Buquês de noiva feitos à mão e sob medida, com flores naturais como copos-de-leite, lírios, orquídeas, rosas, tulipas, girassóis e arranjos personalizados em Franca/SP.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "R. Maria Caprara Archeti, 2990 - Vila Scarabucci",
@@ -111,9 +112,12 @@
     .glass{background:rgba(250,247,241,0.92);}
     .glass-dark{background:rgba(46,53,36,0.88);}
   }
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; width:100%; max-width:100%; overflow-x:hidden;}
   section[id]{scroll-margin-top:88px;}
   body{
+    width:100%;
+    max-width:100%;
+    overflow-x:hidden;
     background-color:var(--ivory);
     background-image:
       radial-gradient(640px 640px at 88% 6%, rgba(183,159,107,0.22), transparent 62%),
@@ -588,7 +592,7 @@
   /* ---------- PROCESSO ---------- */
   .processo{
     position:relative;
-    background:linear-gradient(90deg, rgba(250,247,241,0.58) 0%, rgba(250,247,241,0.42) 34%, rgba(250,247,241,0.12) 68%, rgba(250,247,241,0.02) 100%), url('como-funciona-bg.png') center / cover no-repeat;
+    background:linear-gradient(90deg, rgba(250,247,241,0.58) 0%, rgba(250,247,241,0.42) 34%, rgba(250,247,241,0.12) 68%, rgba(250,247,241,0.02) 100%), url('como-funciona-bg.jpg') center / cover no-repeat;
     background-color:var(--ivory);
     min-height:55.8vw;
     display:flex;
@@ -800,6 +804,7 @@
     backdrop-filter:blur(14px) saturate(140%);
     -webkit-backdrop-filter:blur(14px) saturate(140%);
     border:1px solid var(--glass-dark-border);
+    -webkit-appearance:none; appearance:none;
     transition:background .2s ease;
   }
   .lightbox-close:hover{background:rgba(46,53,36,0.55);}
@@ -833,7 +838,7 @@
     .hero-media::after{
       background:linear-gradient(180deg, rgba(20,20,14,0.28) 0%, rgba(20,20,14,0.42) 30%, rgba(15,15,10,0.78) 58%, rgba(15,15,10,0.94) 100%);
     }
-    .wrap{padding:0 22px;}
+    .wrap{max-width:100%; padding:0 max(5vw, 16px); margin:0 auto;}
     .hero-content{padding:0 22px 60px;}
     .sobre-panel{max-width:100%; margin-left:0; padding:32px 26px;}
     .sobre-panel h2{max-width:20ch;}
@@ -847,7 +852,7 @@
       min-height:680px;
       padding:70px 0;
       background-position:64% center;
-      background-image:linear-gradient(180deg, rgba(250,247,241,0.62) 0%, rgba(250,247,241,0.48) 48%, rgba(250,247,241,0.20) 100%), url('como-funciona-bg.png');
+      background-image:linear-gradient(180deg, rgba(250,247,241,0.62) 0%, rgba(250,247,241,0.48) 48%, rgba(250,247,241,0.20) 100%), url('como-funciona-bg.jpg');
     }
     .steps{grid-template-columns:1fr; gap:34px; max-width:440px; margin-left:0;}
     .step{padding:26px 24px;}
@@ -887,7 +892,8 @@
 <section class="hero" id="topo">
   <div class="hero-media">
     <img src="hero-image.jpeg"
-         alt="Buquê de lírios e rosas brancas sobre uma mesa de madeira, posicionado à direita">
+         alt="Buquê de lírios e rosas brancas sobre uma mesa de madeira, posicionado à direita"
+         fetchpriority="high">
   </div>
   <div class="hero-content">
     <div class="inner">
@@ -961,9 +967,9 @@
           </div>
         </div>
         <div class="cf-controls">
-          <button class="cf-arrow" data-prev>‹</button>
+          <button class="cf-arrow" data-prev aria-label="Foto anterior">‹</button>
           <span class="cf-counter" data-counter>1 / 11</span>
-          <button class="cf-arrow" data-next>›</button>
+          <button class="cf-arrow" data-next aria-label="Próxima foto">›</button>
         </div>
       </div>
 
@@ -1006,9 +1012,9 @@
           </div>
         </div>
         <div class="cf-controls">
-          <button class="cf-arrow" data-prev>‹</button>
+          <button class="cf-arrow" data-prev aria-label="Foto anterior">‹</button>
           <span class="cf-counter" data-counter>1 / 33</span>
-          <button class="cf-arrow" data-next>›</button>
+          <button class="cf-arrow" data-next aria-label="Próxima foto">›</button>
         </div>
       </div>
 
@@ -1125,9 +1131,9 @@
           </div>
         </div>
         <div class="cf-controls">
-          <button class="cf-arrow" data-prev>‹</button>
+          <button class="cf-arrow" data-prev aria-label="Foto anterior">‹</button>
           <span class="cf-counter" data-counter>1 / 54</span>
-          <button class="cf-arrow" data-next>›</button>
+          <button class="cf-arrow" data-next aria-label="Próxima foto">›</button>
         </div>
       </div>
 
@@ -1307,8 +1313,8 @@
   Rosinha Campos Buquês — Franca, SP. Todos os buquês são fotos de trabalhos reais.
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">Fechar ×</span>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Fechar visualização">Fechar ×</button>
   <img id="lightboxImg" src="" alt="">
 </div>
 

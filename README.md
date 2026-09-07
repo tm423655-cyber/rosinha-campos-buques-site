@@ -10,7 +10,7 @@ Site desenvolvido com HTML, CSS e JavaScript nativo (sem frameworks). Página ú
 
 - `index.html` - Página principal do site
 - `hero-image.jpeg` - Imagem do herói (2K)
-- `como-funciona-bg.png` - Imagem de fundo da seção "Como funciona"
+- `como-funciona-bg.jpg` - Imagem de fundo da seção "Como funciona"
 - `sobre-buque.jpg` - Imagem da seção "Sobre a Rosinha"
 - `og-image.jpg` - Imagem para compartilhamento social
 - `robots.txt` - Instruções para rastreadores

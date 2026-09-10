@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rosinhacamposbuques.com.br/sitemap.xml
+Sitemap: https://rosinhacamposbuques.vercel.app/sitemap.xml

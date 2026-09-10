@@ -673,20 +673,6 @@
     grid-template-columns:repeat(3, 1fr);
     gap:36px;
   }
-  .depo-fotos{
-    display:flex;
-    gap:32px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-  .depo-fotos img{
-    width:100%;
-    max-width:480px;
-    border-radius:12px;
-    box-shadow:0 12px 40px rgba(30,26,18,0.12);
-    border:1px solid var(--glass-border);
-    object-fit:contain;
-  }
   .depo-card{
     padding:36px 32px;
     background:var(--glass-bg);
@@ -877,7 +863,7 @@
     .sobre-panel h2{max-width:20ch;}
     .sobre-panel p{max-width:none;}
     .sobre-marks{gap:20px; flex-wrap:wrap;}
-    /* Catálogo — tabs scrollam horizontalmente */
+    /* Catálogo — tabs scrollam horizontalmente com 13+ categorias */
     .galeria{padding:20px 0 80px; overflow-x:hidden;}
     .galeria-head{margin-bottom:28px;}
     .cat-tabs{
@@ -1753,9 +1739,19 @@
       <span class="sobre-tag">Depoimentos</span>
       <h2 style="font-size:clamp(1.9rem,3.2vw,2.5rem);">O que as noivas dizem</h2>
     </div>
-    <div class="depo-fotos reveal">
-      <img src="depoimento-1.png" alt="Depoimento de cliente satisfeita com buquê da Rosinha Campos" loading="lazy">
-      <img src="depoimento-2.png" alt="Depoimento de cliente satisfeita com buquê da Rosinha Campos" loading="lazy">
+    <div class="depo-grid">
+      <div class="depo-card reveal">
+        <p class="quote">"O buquê chegou exatamente como eu tinha pedido, até mais bonito do que eu imaginava. Combinou perfeitamente com o vestido."</p>
+        <p class="who"><strong>Camila R.</strong> — casamento em Franca/SP</p>
+      </div>
+      <div class="depo-card reveal">
+        <p class="quote">"Fui super bem atendida do início ao fim. A Rosinha entendeu o estilo que eu queria e caprichou em cada detalhe."</p>
+        <p class="who"><strong>Juliana M.</strong> — casamento no civil</p>
+      </div>
+      <div class="depo-card reveal">
+        <p class="quote">"As flores estavam fresquinhas e o acabamento em pérolas ficou lindo nas fotos. Recomendo de olhos fechados."</p>
+        <p class="who"><strong>Ana Paula S.</strong> — casamento na igreja</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1878,13 +1874,16 @@
 
   /* ---------- Conversão e acessibilidade do catálogo ---------- */
   const whatsappNumber = '5516991158092';
-  function buildWhatsAppUrl({ category = '', imageAlt = '' } = {}){
+  const siteBaseUrl = 'https://rosinhacamposbuques.vercel.app';
+  function buildWhatsAppUrl({ category = '', imageAlt = '', imageSrc = '' } = {}){
+    const imageUrl = imageSrc ? `${siteBaseUrl}/${imageSrc.replace(/^\//, '')}` : '';
     const message = [
       'Olá! Vim pelo site da Rosinha Campos Buquês e gostaria de solicitar um orçamento.',
       category ? `Gostei da categoria ${category}.` : '',
-      imageAlt ? `A referência que escolhi é: ${imageAlt}.` : '',
+      imageAlt ? `A foto que escolhi é esta (${imageAlt}):` : '',
+      imageUrl || '',
       'A data do meu casamento é:'
-    ].filter(Boolean).join(' ');
+    ].filter(Boolean).join('\n');
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   }
 
@@ -1916,10 +1915,11 @@
       cta.innerHTML = '<a class="btn btn-primary catalog-whatsapp" target="_blank" rel="noopener">Gostei deste estilo — falar no WhatsApp</a><p class="catalog-cta-note">A categoria e a foto selecionada serão incluídas na mensagem.</p>';
       panel.appendChild(cta);
       const link = cta.querySelector('.catalog-whatsapp');
-      panel._updateCatalogCta = imageAlt => {
-        link.href = buildWhatsAppUrl({ category: categoryName(panel), imageAlt });
+      panel._updateCatalogCta = (imageAlt, imageSrc) => {
+        link.href = buildWhatsAppUrl({ category: categoryName(panel), imageAlt, imageSrc });
       };
-      panel._updateCatalogCta(coverflow.querySelector('.cf-slide img')?.alt || '');
+      const firstImg = coverflow.querySelector('.cf-slide img');
+      panel._updateCatalogCta(firstImg?.alt || '', firstImg?.getAttribute('src') || '');
     });
 
     document.querySelectorAll('.catalog-empty-cta').forEach(link => {
@@ -2040,7 +2040,7 @@
         slide.setAttribute('aria-label', selected ? `Ampliar ${image?.alt || 'foto do buquê'}` : `Selecionar ${image?.alt || 'foto do buquê'}`);
       });
       const activeImage = slides[active]?.querySelector('img');
-      root.closest('.cat-panel')?._updateCatalogCta?.(activeImage?.alt || '');
+      root.closest('.cat-panel')?._updateCatalogCta?.(activeImage?.alt || '', activeImage?.getAttribute('src') || '');
     }
 
     slides.forEach((slide, i) => {

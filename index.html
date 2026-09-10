@@ -670,7 +670,7 @@
   }
   .depo-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(2, 1fr);
     gap:36px;
   }
   .depo-card{
@@ -703,6 +703,32 @@
   }
   .depo-card .who{font-size:0.88rem; color:#6b6459;}
   .depo-card .who strong{color:var(--ink); font-weight:500;}
+  .depo-grid{max-width:860px; margin-left:auto; margin-right:auto;}
+  .depo-card-screenshot{padding:0; overflow:hidden;}
+  .depo-card-screenshot::before{display:none;}
+  .depo-card-screenshot img{width:100%; display:block; border-radius:5px;}
+
+  /* step de cuidado */
+  .step-cuidado{
+    display:grid;
+    grid-template-columns:210px 1fr;
+    align-items:center;
+    margin-top:24px;
+    overflow:hidden;
+    border-radius:18px;
+    background:linear-gradient(140deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.20) 46%, rgba(250,247,241,0.30) 100%);
+    backdrop-filter:blur(22px) saturate(180%);
+    -webkit-backdrop-filter:blur(22px) saturate(180%);
+    border:1px solid rgba(255,255,255,0.55);
+    box-shadow:0 18px 44px rgba(46,53,36,0.18), inset 0 1px 0 rgba(255,255,255,0.85);
+    max-width:800px;
+    margin-left:calc(-1 * max(0px, (100vw - 1180px) / 2));
+  }
+  .step-cuidado img{width:100%; height:100%; object-fit:cover; object-position:center top; display:block;}
+  .step-cuidado-content{padding:26px 28px; position:relative; z-index:1;}
+  .step-cuidado-content .step-num{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--gold); font-size:1.15rem; display:block; margin-bottom:14px;}
+  .step-cuidado-content h3{color:var(--green-deep); font-size:1.2rem; margin-bottom:10px; font-weight:500;}
+  .step-cuidado-content p{color:#6b6459; font-size:0.88rem; line-height:1.6; max-width:38ch;}
 
   /* ---------- CONTATO ---------- */
   .contato{
@@ -1730,6 +1756,14 @@
         <p>O buquê é montado com flores fresquinhas e fica disponível para retirada em Franca/SP, no horário combinado com você. Não realizamos entregas.</p>
       </div>
     </div>
+    <div class="step-cuidado reveal">
+      <img src="assets/embedded/cuidado-buque.jpg" alt="Buquê de lírios brancos conservado em jarra com água — dica de armazenamento da Rosinha">
+      <div class="step-cuidado-content">
+        <span class="step-num">E depois do casamento?</span>
+        <h3>Como conservar seu buquê</h3>
+        <p>Coloque em pé numa jarra com água limpa, cobrindo só a ponta dos cabinhos. Guarde na parte baixa da geladeira, troque a água diariamente e evite frutas, calor ou luz direta — assim as flores duram muito mais bonitas.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1740,17 +1774,11 @@
       <h2 style="font-size:clamp(1.9rem,3.2vw,2.5rem);">O que as noivas dizem</h2>
     </div>
     <div class="depo-grid">
-      <div class="depo-card reveal">
-        <p class="quote">"O buquê chegou exatamente como eu tinha pedido, até mais bonito do que eu imaginava. Combinou perfeitamente com o vestido."</p>
-        <p class="who"><strong>Camila R.</strong> — casamento em Franca/SP</p>
+      <div class="depo-card depo-card-screenshot reveal">
+        <img src="assets/embedded/depo-whatsapp-1.jpg" alt="Mensagem de noiva agradecendo pelo buquê: Ele ficou lindo, impecavel! Obrigada de coração!">
       </div>
-      <div class="depo-card reveal">
-        <p class="quote">"Fui super bem atendida do início ao fim. A Rosinha entendeu o estilo que eu queria e caprichou em cada detalhe."</p>
-        <p class="who"><strong>Juliana M.</strong> — casamento no civil</p>
-      </div>
-      <div class="depo-card reveal">
-        <p class="quote">"As flores estavam fresquinhas e o acabamento em pérolas ficou lindo nas fotos. Recomendo de olhos fechados."</p>
-        <p class="who"><strong>Ana Paula S.</strong> — casamento na igreja</p>
+      <div class="depo-card depo-card-screenshot reveal">
+        <img src="assets/embedded/depo-noiva-feliz.jpg" alt="Avaliação de noiva: O buquê então, está comigo até hoje — ele foi perfeito demais. 5 estrelas.">
       </div>
     </div>
   </div>

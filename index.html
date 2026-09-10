@@ -10,6 +10,81 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://rosinhacamposbuques.vercel.app/">
   <meta name="google-site-verification" content="jvEWIAqaeByIi0T5hJDCIXQuGAv-g-vrkFxC_ACfvQk" />
+<script id="analytics-consent-bootstrap">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+
+  (function(){
+    const measurementId = 'G-FGE6Q6EGX6';
+    const storageKey = 'rosinha-analytics-consent';
+
+    function loadAnalytics(){
+      if(document.querySelector('script[data-google-analytics]')) return;
+      const script = document.createElement('script');
+      script.async = true;
+      script.dataset.googleAnalytics = 'true';
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', measurementId, { anonymize_ip: true });
+    }
+
+    function readChoice(){
+      try { return localStorage.getItem(storageKey); } catch (_) { return null; }
+    }
+
+    function saveChoice(choice){
+      try { localStorage.setItem(storageKey, choice); } catch (_) {}
+    }
+
+    function setConsent(choice){
+      const granted = choice === 'granted';
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      saveChoice(choice);
+      if(granted) loadAnalytics();
+    }
+
+    const savedChoice = readChoice();
+    if(savedChoice === 'granted') setConsent('granted');
+
+    document.addEventListener('DOMContentLoaded', function(){
+      const banner = document.getElementById('cookieConsent');
+      const accept = document.getElementById('cookieAccept');
+      const reject = document.getElementById('cookieReject');
+      const settings = document.getElementById('cookieSettings');
+
+      function showBanner(){ banner.hidden = false; }
+      function hideBanner(){ banner.hidden = true; }
+
+      if(!savedChoice) showBanner();
+      accept.addEventListener('click', function(){ setConsent('granted'); hideBanner(); });
+      reject.addEventListener('click', function(){ setConsent('denied'); hideBanner(); });
+      settings.addEventListener('click', showBanner);
+
+      document.addEventListener('click', function(event){
+        const link = event.target.closest('a[href*="wa.me"]');
+        if(!link || readChoice() !== 'granted') return;
+        gtag('event', 'whatsapp_click', {
+          link_text: link.textContent.trim(),
+          link_url: link.href,
+          transport_type: 'beacon'
+        });
+      });
+    });
+  })();
+</script>
 <meta name="theme-color" content="#55603F">
 
 <!-- Favicon (gerado a partir da logo) -->
@@ -1109,6 +1184,57 @@
     .sobre-panel .sobre-marks .lbl{color:rgba(243,237,226,.76);}
   }
 
+
+  .cookie-consent[hidden]{display:none !important;}
+  .cookie-consent{
+    position:fixed;
+    left:50%;
+    bottom:20px;
+    z-index:120;
+    width:min(680px, calc(100% - 32px));
+    transform:translateX(-50%);
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:18px;
+    padding:20px 22px;
+    color:var(--ivory);
+    background:rgba(46,53,36,.96);
+    border:1px solid rgba(220,207,168,.42);
+    border-radius:12px;
+    box-shadow:0 20px 60px rgba(20,18,14,.28);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+  }
+  .cookie-consent p{margin:0; font:400 .86rem/1.55 'Open Sans',sans-serif; color:rgba(250,247,241,.9);}
+  .cookie-consent a{color:var(--gold-soft); text-decoration:underline; text-underline-offset:3px;}
+  .cookie-actions{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+  .cookie-actions button{
+    min-height:44px;
+    padding:10px 16px;
+    border:1px solid var(--gold-soft);
+    border-radius:100px;
+    font:500 .82rem/1 'Jost',sans-serif;
+    cursor:pointer;
+  }
+  .cookie-accept{background:var(--gold-soft); color:var(--green-deep);}
+  .cookie-reject{background:transparent; color:var(--ivory);}
+  .cookie-settings{
+    margin-left:8px;
+    padding:2px 0;
+    border:0;
+    color:inherit;
+    background:none;
+    font:inherit;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    cursor:pointer;
+  }
+  @media (max-width:600px){
+    .cookie-consent{grid-template-columns:1fr; bottom:12px; gap:14px; padding:18px;}
+    .cookie-actions{justify-content:stretch;}
+    .cookie-actions button{flex:1;}
+  }
 </style>
 </head>
 <body>
@@ -1823,8 +1949,17 @@
       <circle cx="760" cy="52" r="3" fill="#DCCFA8" stroke="none"/>
     </g>
   </svg>
-  Rosinha Campos Buquês — Franca, SP. Todos os buquês são fotos de trabalhos reais.
+  Rosinha Campos Buquês — Franca, SP. Todos os buquês são fotos de trabalhos reais.<br>
+  <a href="privacidade.html">Política de Privacidade</a> <button class="cookie-settings" id="cookieSettings" type="button">Preferências de cookies</button>
 </footer>
+
+<div class="cookie-consent" id="cookieConsent" role="dialog" aria-label="Preferências de cookies" hidden>
+  <p>Usamos cookies opcionais do Google Analytics para entender visitas e melhorar o site. Você pode aceitar ou recusar sem afetar a navegação. <a href="privacidade.html">Política de Privacidade</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-reject" id="cookieReject" type="button">Recusar</button>
+    <button class="cookie-accept" id="cookieAccept" type="button">Aceitar métricas</button>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" hidden>
   <h2 class="sr-only" id="lightboxTitle">Visualização ampliada do buquê</h2>
